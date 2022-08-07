@@ -1,0 +1,97 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+				
+	<div class="card mb-3" style="max-width: 800px;">
+		<div class="row g-0">
+			<div class="col-md-4">
+				<img src="{{listing.image}}" class="img-fluid rounded-start" alt="...">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">{{ listing.title }}</h5>
+					<p class="card-text">{{listing.description}}.</p>
+					<p>Catagory: {{ listing.catagory }}</p>
+					<p class="card-text"><strong>Current Price: {{listing.current_price}} $</strong></p>
+					<p class="card-text">Seller: {{listing.seller.username}}</p>
+				</div>   
+
+				<!-- Add To Watchlist (watchlist form) --> 
+				<div>
+					{% if listing.seller != user %}
+						<form action="{% url 'watchlist' %}" method="post">
+							{% csrf_token %}
+							<input type="hidden" name="listing_id" value="{{ listing.id }}">
+							{% if listing in watchlist %}
+								<input type="hidden" name="modify" value="remove">
+								<input class="btn btn-primary" type="submit" value="Remove from watchlist">
+							{% else %}
+								<input type="hidden" name="modify" value="add">
+								<input class="btn btn-primary" type="submit" value="Add to watchlist">
+							{% endif %}
+						</form>    
+					{% endif %}                            
+				</div>      
+
+				<!-- Bid Form -->
+				<div>
+					<form action="{% url 'listing' listing.id %}" method="post">
+						{% csrf_token %}
+
+						{% if listing.seller != user %}
+
+							{% if listing.sold == False %}
+								<input type="number" placeholder="Place a Bid here" name="amount">
+								<button type="submit" class="btn btn-primary">Bid</button>  
+							{% else %}
+								<strong>Sold!</strong>
+							{% endif %}
+
+					
+						{% else %}
+
+							{% if listing.sold == False %}
+								<input type="hidden" name="close" value="close">
+								<button type="submit" class="btn btn-primary">Close</button>  
+							{% else %}
+								<strong>You Sold this listing successfully to {{ listing.buyer }} <br> at a price of {{ listing.current_price }}$</strong>
+							{% endif %}   
+								
+						{% endif %}
+					</form>
+				</div>
+			</div>  
+		</div>
+	</div>
+			
+	<!-- Comments-->
+	<div class="comments_container">
+
+		<h5>Comments</h5>
+
+		<!-- New Comment Form -->
+		<div>
+			<form action="{% url 'comment' %}" method="post">
+				{% csrf_token %}
+				<textarea name="comment" id="comment" cols="60" rows="3" placeholder="Write a Comment here"></textarea>
+
+				<input type="hidden" name="listing_id" value="{{ listing.id }}">
+				<input type="submit" Value="Comment">
+			</form>
+		</div>
+
+		<!-- Comments -->
+		<div>
+			{% for comment in comments %}
+				<div class="comment">
+					<h4>{{ comment.user }}</h4>
+					<p>{{ comment.text }}</p>
+				</div>
+			{% empty %}
+				<p>No comments yet on this listing</p>
+			{% endfor %}
+		</div>
+	</div>
+
+		
+
+{% endblock %}
