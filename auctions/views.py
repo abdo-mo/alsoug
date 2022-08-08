@@ -11,7 +11,11 @@ from .models import *
 
 
 def index(request):
+    def datesort(listing):
+        return listing.created_time
+
     listings = Listing.objects.filter(sold=False)
+    listings.sort(key=datesort)
     return render(request, "auctions/index.html", {
         "listings": listings
     })
