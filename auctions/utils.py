@@ -18,7 +18,7 @@ def validate_new_listing(title, description, image, starting_bid, catagory):
     if title != "" and description != "" and image != "":
         if starting_bid != "" and starting_bid is float:
             try:
-                c = Catagory.objects.get(name=catagory)
+                Catagory.objects.get(name=catagory)
             except:
                 return False
             return True
