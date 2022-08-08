@@ -1,6 +1,14 @@
 from auctions.models import *
 # Helper Functions
 
+def isfloat(num):
+    try:
+        float(num)
+    except:
+        return False
+    return True
+
+
 def validate_bid(amount, listing):
     if Bid.objects.filter(listing=listing).first():
         if amount <= listing.current_price:
@@ -16,7 +24,7 @@ def validate_bid(amount, listing):
 
 def validate_new_listing(title, description, image, starting_bid, catagory):
     if title != "" and description != "" and image != "":
-        if starting_bid != "" and starting_bid is float:
+        if starting_bid != "" and isfloat(starting_bid):
             try:
                 Catagory.objects.get(name=catagory)
             except:
