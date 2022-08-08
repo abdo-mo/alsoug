@@ -12,7 +12,7 @@ from .models import *
 
 def index(request):
     listings = Listing.objects.filter(sold=False)
-    listings.order_by("-created_time")
+    listings.order_by("created_time")
     return render(request, "auctions/index.html", {
         "listings": listings
     })
@@ -114,7 +114,7 @@ def listing(request, listing_id):
     listing = Listing.objects.get(pk=listing_id)
     watchlist = request.user.watchlist.all()
     comments = listing.comments.all()
-    comments.order_by("-created_time")
+    comments.order_by("created_time")
 
     """ 
     Before the complexity starts, you should know these thigns:
