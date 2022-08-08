@@ -285,7 +285,7 @@ def catagories(request):
 
 def catagory(request, catagory_id):
     catagory = Catagory.objects.get(pk=catagory_id)
-    listings = Listing.objects.filter(catagory=catagory)
+    listings = Listing.objects.filter(catagory=catagory, sold=False)
     
     # You left here
     return render(request, "auctions/catagory.html", {
