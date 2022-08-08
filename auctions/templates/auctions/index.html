@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <h4 class="card-title"><a href="{% url 'listing' listing.id %}">{{listing.title}}</a></h5>
                     <p class="card-text">{{ listing.description }}</p>
-                    <p style="text-align: left;">By {{ listing.seller }}       {{listing.created_time}}</p>
+                    <p style="text-align: left;"><b>By {{ listing.seller }}</b> <i style="align-self: right;">{{ listing.created_time }}</i></p>
                 </div>
                 <div class="card-footer">
                     <strong class="">{{ listing.current_price }} $</strong>
