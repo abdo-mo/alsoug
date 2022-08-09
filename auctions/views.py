@@ -73,7 +73,7 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
-
+@login_required
 def new_listing(request):
     catagories = Catagory.objects.all()
 
