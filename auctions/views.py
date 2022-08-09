@@ -7,7 +7,6 @@ from django.urls import reverse
 from auctions.utils import *
 from django.contrib.auth.decorators import login_required
 from django import forms
-from auctions.forms import UploadImage
 
 from .models import *
 
