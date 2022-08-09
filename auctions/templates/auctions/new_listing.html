@@ -3,7 +3,7 @@
 
     <h1>New Listing</h1>
     <div>
-        <form action="{% url 'new_listing' %}" method="post">
+        <form action="{% url 'new_listing' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div>
                 <label for="title">Title</label>
@@ -14,8 +14,8 @@
                 <textarea id="description" name="description" rows="10" cols="50"></textarea>                
             </div>
             <div>
-                <label for="image">Image URL (optional)</label>
-                <input type="url" id="image" name="image">
+                <label for="image"> Upload an image</label>
+                <input type="file" id="image" name="image" accept="image/*">
             </div>
             <div>
                 <label for="catagory"> Catagory </label>

@@ -6,8 +6,13 @@ from django.test import modify_settings
 from django.urls import reverse
 from auctions.utils import *
 from django.contrib.auth.decorators import login_required
+from django import forms
+from auctions.forms import UploadImage
 
 from .models import *
+
+class UploadImageForm(forms.Form):
+    image = forms.ImageField()
 
 
 def index(request):
@@ -79,19 +84,18 @@ def new_listing(request):
         try:
             title = request.POST["title"]
             description = request.POST["description"]
-            image = request.POST["image"]
+            image = request.FILES["image"]
             starting_bid = request.POST["starting_bid"]
+
         except:
             return render(request, "auctions/new_listing.html", {
                 "catagories": catagories, 
                 "alert": "<h2>You messed the names of the inputs, the police is on the way!</h2>"
             })
-
-            
         
 
         # validate listing
-        valid_listing = validate_new_listing(title, description, image, starting_bid, request.POST["catagory"])
+        valid_listing = validate_new_listing(title, description, starting_bid, request.POST["catagory"])
         
         if valid_listing:
             catagory = Catagory.objects.get(name=request.POST["catagory"])
@@ -103,6 +107,9 @@ def new_listing(request):
                 "catagories": catagories, 
                 "alert": "<h2>Invalid input</h2>"
             })
+
+    form = UploadImage(request.FILES)
+    print(request.FILES)
 
     return render(request, "auctions/new_listing.html", {
         "catagories": catagories

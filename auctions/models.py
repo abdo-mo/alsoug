@@ -20,13 +20,13 @@ class User(AbstractUser):
 class Listing(models.Model):
     title = models.CharField(max_length=300)
     description = models.TextField()
-    image = models.URLField(max_length=1000)
     seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sold_listings")
     current_price = models.FloatField()
     sold = models.BooleanField(default=False)
     buyer = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE, related_name="bought_listings")
     catagory = models.ForeignKey(Catagory, on_delete=models.SET_NULL, related_name="listings", null=True)
     created_time = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to="staticfiles/auctions/images", null=True, blank=True)
 
     def __str__(self):
         return f"{self.title}"

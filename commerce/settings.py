@@ -16,9 +16,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Base url to serve media files
-MEDIA_URL = '/media/'
+MEDIA_URL = ''
 # Path where media is stored
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = ''
 
 
 # Quick-start development settings - unsuitable for production
@@ -32,7 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "0.0.0.0",
-    "alsoug3.herokuapp.com"
+    "alsoug3.herokuapp.com",
+    "127.0.0.1"
 ]
 
 
