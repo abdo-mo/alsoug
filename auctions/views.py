@@ -108,8 +108,6 @@ def new_listing(request):
                 "alert": "<h2>Invalid input</h2>"
             })
 
-    form = UploadImage(request.FILES)
-    print(request.FILES)
 
     return render(request, "auctions/new_listing.html", {
         "catagories": catagories
