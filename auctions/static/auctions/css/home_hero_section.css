@@ -1,0 +1,8 @@
+.home-hero-section {
+    /* FLEXBOX SETTING */
+    display: flex;
+
+    height: 100vh;
+    background-image: url("../assets/homebackground.jpg");
+    background-size: cover;
+}

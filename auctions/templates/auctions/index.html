@@ -1,34 +1,153 @@
-{% extends "auctions/layout.html" %}
-
-{% block body %}
-    <div>
-        <h1>Active Listings</h1>
-
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-        {% for listing in listings %}   
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>AL-Soug</title>
+        <link rel="stylesheet" href="{% static 'auctions/css/basic.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/home_hero_section.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/featured_items.css' %}">
+        <link href="csss/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body> 
         
-            <div class="col">
-                <div class="card h-100">
-                {% if listing.image %}
-                    <img src="{{ listing.image }}" class="card-img-top" alt="{{ listing.title }}">
-                {% endif %}
-                <div class="card-body">
-                    <h4 class="card-title"><a href="{% url 'listing' listing.id %}">{{listing.title}}</a></h5>
-                    <p class="card-text">{{ listing.description }}</p>
-                    <p style="text-align: left;"><b>By {{ listing.seller }}</b> <i style="align-self: right;">{{ listing.created_time }}</i></p>
-                </div>
-                <div class="card-footer">
-                    <strong class="">{{ listing.current_price }} $</strong>
-                </div>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="#">
+                    <img class="logo-image" src="{% static 'auctions/assets/primary_logo.png' %}" alt="alsoug logo">
+                </a>
             </div>
+            <div class="nav-menu">
+                <a class="navlink major-link underline" href="{% url 'index' %}">Home</a>
+                <a class="navlink major-link underline" href="{% url 'active_listings' %}">Active Listings</a>
+                <a class="navlink major-link underline" href="{% url 'new_listing' %}">Create a New Listing</a>
+                <a class="navlink major-link underline" href="{% url 'catagories' %}">Catagories</a>
+                <a class="navlink major-link underline" href="{% url 'watchlist' %}">Watchlist</a>
             </div>
+            <button class="login-button">Login</button>
+        </nav>        
+
+        <!-- Home Hero Section -->
+        <section class="home-hero-section">
+
+        </section>
+
+
+        <!-- Featured listings Section -->
+        <section class="featured-listings-section">
+            <!-- featured-listings-content -->
+            <div class="featured-listings-content">
+                <h1 class="featured-listings-content-heading">Featured Listings</h1>
+                <p class="featured-listings-content-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolore ad blanditiis nesciunt? Odit totam dignissimos cum ut necessitatibus vero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id nemo quas laboriosam ad repellendus quidem explicabo non debitis harum officiis.</p>
+            </div>
+
+            <!-- featured-listing-grid -->
+
+            <div class="featured-listings-grid">
+            {% for listing in featured_listings %}
+                <a href="#" class="listing-card">
+                    <div class="listing-card-image" style="background-image: url('{{listing.image}}');"></div>
+                    <div class="listing-card-content">
+                        <h1 class="listing-card-heading">{{listing.title}}</h1>
+                        <p class="listing-card-desciption">{{listing.description}} </p>
+                    </div>
+                    <div class="listing-card-price">
+                        <div style="font-size: 20px;"><b>{{listing.current_price}} $</b></div>
+                        <div>12 bids</div>
+                    </div>
+                </a>
+            {% empty %}
+                There are no Featured listings
+            {% endfor %}
+            </div>
+            <!--
+            <div class="featured-listings-grid">
+                <a href="#" class="listing-card">
+                    <div class="listing-card-image"></div>
+                    <div class="listing-card-content">
+                        <h1 class="listing-card-heading">Sample Listing</h1>
+                        <p class="listing-card-desciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    </div>
+                    <div class="listing-card-price">
+                        <div style="font-size: 20px;"><b>75 $</b></div>
+                        <div>12 bids</div>
+                    </div>
+                </a>
+                <a href="#" class="listing-card">
+                    <div class="listing-card-image"></div>
+                    <div class="listing-card-content">
+                        <h1 class="listing-card-heading">Sample Listing</h1>
+                        <p class="listing-card-desciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    </div>
+                    <div class="listing-card-price">
+                        <div style="font-size: 20px;"><b>75 $</b></div>
+                        <div>12 bids</div>
+                    </div>
+                </a>
+                <a href="#" class="listing-card">
+                    <div class="listing-card-image"></div>
+                    <div class="listing-card-content">
+                        <h1 class="listing-card-heading">Sample Listing</h1>
+                        <p class="listing-card-desciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    </div>
+                    <div class="listing-card-price">
+                        <div style="font-size: 20px;"><b>75 $</b></div>
+                        <div>12 bids</div>
+                    </div>
+                </a>
+                <a href="#" class="listing-card">
+                    <div class="listing-card-image"></div>
+                    <div class="listing-card-content">
+                        <h1 class="listing-card-heading">Sample Listing</h1>
+                        <p class="listing-card-desciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    </div>
+                    <div class="listing-card-price">
+                        <div style="font-size: 20px;"><b>75 $</b></div>
+                        <div>12 bids</div>
+                    </div>
+                </a>
+            </div>  
+            
+            -->
+
+            <div style="text-align: center; padding: 40px;">
+                <a href="#" class="major-button featured-listings-button">
+                    Explore all active listings >>
+                </a>    
+            </div>
+
+        </section>
+
+
+
         
-        {% empty %}
-            <p>No Active Listings yet</p>
-        {% endfor %}
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-heading"><img class="footer-logo" src="{% static 'auctions/assets/light_logo.png' %}" alt="alsoug logo"></div>
+            <div></div>
+            <div class="footer-content-left">
+                <a class="footer-link major-link underline" href="#">Home</a> <br>
+                <a class="footer-link major-link underline" href="#">Active listings</a> <br>
+                <a class="footer-link major-link underline" href="#">Create a new lisitng</a> <br>
+                <a class="footer-link major-link underline" href="#">Catagories</a> <br>
+                <a class="footer-link major-link underline" href="#">Watchlist</a> 
+            </div>
+            <div class="footer-content-right">
+                <a class="footer-link major-link underline" href="#">Login</a> <br>
+                <a class="footer-link major-link underline" href="#">Sign up</a> <br>
+                <a class="footer-link major-link underline" href="#">Terms of services</a> <br>
+                <a class="footer-link major-link underline" href="#">Report a bug</a> <br>
+                <a class="footer-link major-link underline" href="#">contact us</a>
+            </div>
+            <div class="footer-footer">
+                This website is designed and developed by Mohammed Hisham <br>
+                Email: M7mdhisham25@gmail.com <br>
+                Number: +249126847601 (WhatsApp) <br>
+            </div>
+        </footer>
 
-        </div>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
 
-    </div>
-    
-{% endblock %}
+

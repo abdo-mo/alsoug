@@ -3,20 +3,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block title %}Alsoug{% endblock %}</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>{% block title %}Al-Soug{% endblock %}</title>
+        <!--
+            <link rel="stylesheet" href="https://tackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        -->
+        <!-- Loading stylesheets -->
         <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'auctions/css/basic.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/home_hero_section.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/featured_items.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/active_listings.css' %}">
     </head>
-    <body>
-        <h1>Alsoug</h1>
-        <div>
-            {% if user.is_authenticated %}
-                Signed in as <strong>{{ user.username }}</strong>.
-            {% else %}
-                Not signed in.
-            {% endif %}
-        </div>
-        <ul class="nav">
+    <body>      
+        <!-- Original Navbar -->
+        <!--
+           <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
             </li>
@@ -43,8 +44,33 @@
                 </li>
             {% endif %}
         </ul>
+        
+        -->
+            
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="#">
+                    <img class="logo-image" src="{% static 'auctions/assets/primary_logo.png' %}" alt="alsoug logo">
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a class="navlink major-link underline" href="{% url 'index' %}">Home</a>
+                <a class="navlink major-link underline" href="{% url 'active_listings' %}">Active Listings</a>
+                <a class="navlink major-link underline" href="{% url 'new_listing' %}">Create a New Listing</a>
+                <a class="navlink major-link underline" href="{% url 'catagories' %}">Catagories</a>
+                <a class="navlink major-link underline" href="{% url 'watchlist' %}">Watchlist</a>
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                    Signed in as <strong>{{ user.username }} </strong>.
+                {% else %}
+                    <button class="login-button">Login</button>
+                {% endif %}
+            </div>
+        </nav>     
 
-        <hr>        
+
         {% if alert %}
             {{ alert | safe }}
         {% endif %}
@@ -52,7 +78,31 @@
         {% block body %}
         {% endblock %}
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-heading"><img class="footer-logo" src="{% static 'auctions/assets/light_logo.png' %}" alt="alsoug logo"></div>
+            <div></div>
+            <div class="footer-content-left">
+                <a class="footer-link major-link underline" href="#">Home</a> <br>
+                <a class="footer-link major-link underline" href="#">Active listings</a> <br>
+                <a class="footer-link major-link underline" href="#">Create a new lisitng</a> <br>
+                <a class="footer-link major-link underline" href="#">Catagories</a> <br>
+                <a class="footer-link major-link underline" href="#">Watchlist</a> 
+            </div>
+            <div class="footer-content-right">
+                <a class="footer-link major-link underline" href="#">Login</a> <br>
+                <a class="footer-link major-link underline" href="#">Sign up</a> <br>
+                <a class="footer-link major-link underline" href="#">Terms of services</a> <br>
+                <a class="footer-link major-link underline" href="#">Report a bug</a> <br>
+                <a class="footer-link major-link underline" href="#">contact us</a>
+            </div>
+            <div class="footer-footer">
+                This website is designed and developed by Mohammed Hisham <br>
+                Email: M7mdhisham25@gmail.com <br>
+                Number: +249126847601 (WhatsApp) <br>
+            </div>
+        </footer>
+        
     </body>
 </html>

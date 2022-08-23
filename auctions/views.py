@@ -15,9 +15,15 @@ class UploadImageForm(forms.Form):
 
 
 def index(request):
+    featured_listings = Listing.objects.filter(featured=True)
+    return render(request, "auctions/index.html", {
+        "featured_listings": featured_listings
+    })
+
+def active_listings(request):
     listings = Listing.objects.filter(sold=False)
     listings.order_by("created_time")
-    return render(request, "auctions/index.html", {
+    return render(request, "auctions/active_listings.html", {
         "listings": listings
     })
 

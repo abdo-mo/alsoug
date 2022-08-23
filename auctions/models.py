@@ -27,6 +27,7 @@ class Listing(models.Model):
     catagory = models.ForeignKey(Catagory, on_delete=models.SET_NULL, related_name="listings", null=True)
     created_time = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to="staticfiles/auctions/images", null=True, blank=True)
+    featured = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.title}"

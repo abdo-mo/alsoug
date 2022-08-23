@@ -1,0 +1,32 @@
+.grid-container {
+    /* Basic grid settings */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    /*
+    grid-template-columns:  50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px;
+    */
+    gap: 20px;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    overflow:visible;
+    
+    background-color: rgb(160, 193, 255);
+    padding: 20px;
+    height: 1000px;
+}
+
+
+.grid-item {
+    padding: 20px;
+    background-color: rgb(198, 223, 255);
+    border: 1px solid black;
+
+}
+
+.item1 {
+
+    grid-area: 1 / 2 / span 3 / span 3;
+}
+

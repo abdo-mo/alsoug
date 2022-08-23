@@ -1,0 +1,50 @@
+
+.featured-listings-section {
+    margin-bottom: 100px;
+}
+
+
+
+/* Featured Listing Content */
+.featured-listings-content {
+    padding: 60px;
+    padding-bottom: 0px;
+}
+.featured-listings-content-heading {
+    font-size: 70px;
+
+}
+.featured-listings-content-paragraph {
+    max-width: 800px;
+    font-size: 17px;
+    
+}
+
+
+
+
+/* Featued Listings Grid */
+
+.featured-listings-grid {
+    /* Grid Settings */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 40px;
+    align-content: center;
+
+    padding: 60px;
+    padding-bottom: 0px;
+}
+
+.featured-listings-button {
+    display: inline-block;
+    font-size: 18px;
+    border: 2px solid #0077ff;
+    color: #0077ff;
+    transition: 400ms;
+}
+
+.featured-listings-button:hover {
+    color: white;
+    background-color: #0077ff;
+}

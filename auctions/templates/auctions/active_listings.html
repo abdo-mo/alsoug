@@ -1,0 +1,51 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1>Active Listings</h1>
+
+    <div class="active-listings-grid">
+        {% for listing in listings %}
+            <a href="#" class="listing-card">
+                <div class="listing-card-image" style="background-image: url('{{listing.image}}');"></div>
+                <div class="listing-card-content">
+                    <h1 class="listing-card-heading">{{listing.title}}</h1>
+                    <p class="listing-card-desciption">{{listing.description}} </p>
+                </div>
+                <div class="listing-card-price">
+                    <div style="font-size: 20px;"><b>{{listing.current_price}} $</b></div>
+                    <div>12 bids</div>
+                </div>
+            </a>
+        {% empty %}
+            There are no active listings right now!
+        {% endfor %}
+    </div>
+    <!--
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for listing in listings %}   
+    
+        <div class="col">
+            <div class="card h-100">
+            {% if listing.image %}
+                <img src="{{ listing.image }}" class="card-img-top" alt="{{ listing.title }}">
+            {% endif %}
+            <div class="card-body">
+                <h4 class="card-title"><a href="{% url 'listing' listing.id %}">{{listing.title}}</a></h5>
+                <p class="card-text">{{ listing.description }}</p>
+                <p style="text-align: left;"><b>By {{ listing.seller }}</b> <i style="align-self: right;">{{ listing.created_time }}</i></p>
+            </div>
+            <div class="card-footer">
+                <strong class="">{{ listing.current_price }} $</strong>
+            </div>
+        </div>
+    
+    {% empty %}
+        <p>No Active Listings yet</p>
+    {% endfor %}
+
+    </div>
+    -->
+
+
+
+{% endblock %}
