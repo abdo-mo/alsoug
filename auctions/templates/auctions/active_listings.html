@@ -1,11 +1,17 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h1>Active Listings</h1>
+    <!-- Navbar area-->
+    <div style="height: 69px;"></div>
 
-    <div class="active-listings-grid">
+    <div class="active-listings-content">
+        <h1 class="active-listings-heading">Active Listings</h1>
+        <p class="active-listings-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda incidunt quod delectus pariatur vitae totam.</p>
+    </div>
+
+    <div class="listings-grid">
         {% for listing in listings %}
-            <a href="#" class="listing-card">
+            <a href="{% url 'listing' listing.id %}" class="listing-card">
                 <div class="listing-card-image" style="background-image: url('{{listing.image}}');"></div>
                 <div class="listing-card-content">
                     <h1 class="listing-card-heading">{{listing.title}}</h1>

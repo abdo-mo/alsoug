@@ -1,9 +1,31 @@
 {% extends "auctions/layout.html" %}
 {% block body %}
-
-    <h1>Watchlist</h1>
+    <!-- Navbar area -->
+    <div style="height: 69px;"></div>
+    <div class="major-content">
+        <h1 class="major-heading">Watchlist</h1>
+        <p class="major-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, molestiae?</p>
+    </div>
+    <div class="listings-grid">
+        {% for listing in watchlist %}
+            <a href="{% url 'listing' listing.id %}" class="listing-card">
+                <div class="listing-card-image" style="background-image: url('{{listing.image}}');"></div>
+                <div class="listing-card-content">
+                    <h1 class="listing-card-heading">{{listing.title}}</h1>
+                    <p class="listing-card-desciption">{{listing.description}} </p>
+                </div>
+                <div class="listing-card-price">
+                    <div style="font-size: 20px;"><b>{{listing.current_price}} $</b></div>
+                    <div>12 bids</div>
+                </div>
+            </a>
+        {% empty %}
+            There are no active listings right now!
+        {% endfor %}
+    </div>
     
-    {% for listing in watchlist %}
+    <!--
+        {% for listing in watchlist %}
         <div class="col">
             <div class="card h-100">
             {% if listing.image %}
@@ -20,6 +42,8 @@
         </div>
     {% empty %}
         <p>You don't items in the watchlist</p>
-    {% endfor %}
+    {% endfor %}   
+    -->
+
 
 {% endblock %}

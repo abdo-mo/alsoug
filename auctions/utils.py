@@ -22,8 +22,8 @@ def validate_bid(amount, listing):
 
 # Validate listing form
 
-def validate_new_listing(title, description, starting_bid, catagory):
-    if title != "" and description != "":
+def validate_new_listing(title, description, image, starting_bid, catagory):
+    if title != "" and description != "" and image!="":
         if starting_bid != "" and isfloat(starting_bid):
             try:
                 Catagory.objects.get(name=catagory)

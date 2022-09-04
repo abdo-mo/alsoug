@@ -1,8 +1,11 @@
 .home-hero-section {
     /* FLEXBOX SETTING */
     display: flex;
+    justify-content: center;
+    align-items: center;
 
     height: 100vh;
-    background-image: url("../assets/homebackground.jpg");
     background-size: cover;
+    background-position: top;
+
 }

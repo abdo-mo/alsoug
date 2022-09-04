@@ -6,7 +6,11 @@
         <link rel="stylesheet" href="{% static 'auctions/css/basic.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/home_hero_section.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/featured_items.css' %}">
-        <link href="csss/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'auctions/css/nav.css' %}">
+        <!--
+            <link href="csss/bootstrap.min.css" rel="stylesheet">
+        -->
+        <script src="{% static 'auctions/js/humburger.js' %}"></script>
     </head>
     <body> 
         
@@ -17,6 +21,12 @@
                     <img class="logo-image" src="{% static 'auctions/assets/primary_logo.png' %}" alt="alsoug logo">
                 </a>
             </div>
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>        
+
             <div class="nav-menu">
                 <a class="navlink major-link underline" href="{% url 'index' %}">Home</a>
                 <a class="navlink major-link underline" href="{% url 'active_listings' %}">Active Listings</a>
@@ -28,9 +38,10 @@
         </nav>        
 
         <!-- Home Hero Section -->
-        <section class="home-hero-section">
+            <section class="home-hero-section" style="background-image: url('{% static 'auctions/assets/homebackground.jpg' %}')">
 
-        </section>
+            </section>        
+
 
 
         <!-- Featured listings Section -->
@@ -38,14 +49,13 @@
             <!-- featured-listings-content -->
             <div class="featured-listings-content">
                 <h1 class="featured-listings-content-heading">Featured Listings</h1>
-                <p class="featured-listings-content-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolore ad blanditiis nesciunt? Odit totam dignissimos cum ut necessitatibus vero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id nemo quas laboriosam ad repellendus quidem explicabo non debitis harum officiis.</p>
+                <p class="featured-listings-content-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam dolore ad blanditiis nesciunt? Odit totam dignissimos cum ut necessitatibus vero. Lorem ipsum dolor sit amet.</p>
             </div>
 
-            <!-- featured-listing-grid -->
-
-            <div class="featured-listings-grid">
+            <!-- Featured Listings Grid -->
+            <div class="listings-grid">
             {% for listing in featured_listings %}
-                <a href="#" class="listing-card">
+                <a href="{% url 'listing' listing.id %}" class="listing-card">
                     <div class="listing-card-image" style="background-image: url('{{listing.image}}');"></div>
                     <div class="listing-card-content">
                         <h1 class="listing-card-heading">{{listing.title}}</h1>
@@ -59,56 +69,7 @@
             {% empty %}
                 There are no Featured listings
             {% endfor %}
-            </div>
-            <!--
-            <div class="featured-listings-grid">
-                <a href="#" class="listing-card">
-                    <div class="listing-card-image"></div>
-                    <div class="listing-card-content">
-                        <h1 class="listing-card-heading">Sample Listing</h1>
-                        <p class="listing-card-desciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                    </div>
-                    <div class="listing-card-price">
-                        <div style="font-size: 20px;"><b>75 $</b></div>
-                        <div>12 bids</div>
-                    </div>
-                </a>
-                <a href="#" class="listing-card">
-                    <div class="listing-card-image"></div>
-                    <div class="listing-card-content">
-                        <h1 class="listing-card-heading">Sample Listing</h1>
-                        <p class="listing-card-desciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                    </div>
-                    <div class="listing-card-price">
-                        <div style="font-size: 20px;"><b>75 $</b></div>
-                        <div>12 bids</div>
-                    </div>
-                </a>
-                <a href="#" class="listing-card">
-                    <div class="listing-card-image"></div>
-                    <div class="listing-card-content">
-                        <h1 class="listing-card-heading">Sample Listing</h1>
-                        <p class="listing-card-desciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                    </div>
-                    <div class="listing-card-price">
-                        <div style="font-size: 20px;"><b>75 $</b></div>
-                        <div>12 bids</div>
-                    </div>
-                </a>
-                <a href="#" class="listing-card">
-                    <div class="listing-card-image"></div>
-                    <div class="listing-card-content">
-                        <h1 class="listing-card-heading">Sample Listing</h1>
-                        <p class="listing-card-desciption">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                    </div>
-                    <div class="listing-card-price">
-                        <div style="font-size: 20px;"><b>75 $</b></div>
-                        <div>12 bids</div>
-                    </div>
-                </a>
-            </div>  
-            
-            -->
+            </div>            
 
             <div style="text-align: center; padding: 40px;">
                 <a href="#" class="major-button featured-listings-button">
@@ -146,7 +107,10 @@
             </div>
         </footer>
 
-        <script src="js/bootstrap.min.js"></script>
+        <!--Bootstrap js-->
+        <!--
+            <script src="js/bootstrap.min.js"></script>
+        -->
     </body>
 </html>
 

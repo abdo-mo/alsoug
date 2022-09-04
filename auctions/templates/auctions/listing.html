@@ -1,97 +1,128 @@
 {% extends "auctions/layout.html" %}
 {% block body %}
-				
-	<div class="card mb-3" style="max-width: 800px;">
-		<div class="row g-0">
-			<div class="col-md-4">
-				<img src="{{listing.image}}" class="img-fluid rounded-start" alt="...">
-			</div>
-			<div class="col-md-8">
-				<div class="card-body">
-					<h5 class="card-title">{{ listing.title }}</h5>
-					<p class="card-text">{{listing.description}}.</p>
-					<p>Catagory: {{ listing.catagory }}</p>
-					<p class="card-text"><strong>Current Price: {{listing.current_price}} $</strong></p>
-					<p class="card-text">Seller: {{listing.seller.username}}</p>
-				</div>   
+{% load static %}
+
+	<!-- Navbar Area -->
+	<div style="height: 69px;"></div>
+
+	<!-- new markup -->
+	<section class="listing-section">
+		<div class="listing-container">
+			<!--
+				<img class="listing-image" src="{% static 'auctions/assets/homebackground.jpg' %}" alt="background">     
+			-->
+			<div class="listing-content-container">
 
 				<!-- Add To Watchlist (watchlist form) --> 
-				<div>
+				<div class="listing-watchlist-container">
 					{% if listing.seller != user %}
+						<h1>{{ listing.title }}</h1>
+
 						<form action="{% url 'watchlist' %}" method="post">
 							{% csrf_token %}
 							<input type="hidden" name="listing_id" value="{{ listing.id }}">
 							{% if listing in watchlist %}
 								<input type="hidden" name="modify" value="remove">
-								<input class="btn btn-primary" type="submit" value="Remove from watchlist">
+								<input class="listing-watchlist-button" type="submit" value="Remove from watchlist">
 							{% else %}
 								<input type="hidden" name="modify" value="add">
-								<input class="btn btn-primary" type="submit" value="Add to watchlist">
+								<button class="listing-watchlist-button" type="submit">+ Add to watchlist</button>
 							{% endif %}
 						</form>    
-					{% endif %}                            
-				</div>      
-
-				<!-- Bid Form -->
-				<div>
-					<form action="{% url 'listing' listing.id %}" method="post">
-						{% csrf_token %}
-
-						{% if listing.seller != user %}
-
-							{% if listing.sold == False %}
-								<input type="number" placeholder="Place a Bid here" name="amount">
-								<button type="submit" class="btn btn-primary">Bid</button>  
-							{% else %}
-								<strong>Sold!</strong>
-							{% endif %}
-
 					
-						{% else %}
+					{% else %}
+						<h1>{{ listing.title }}</h1>
 
-							{% if listing.sold == False %}
-								<input type="hidden" name="close" value="close">
-								<button type="submit" class="btn btn-primary">Close</button>  
-							{% else %}
-								<strong>You Sold this listing successfully to {{ listing.buyer }} <br> at a price of {{ listing.current_price }}$</strong>
-							{% endif %}   
-								
-						{% endif %}
-					</form>
+					{% endif %}                            
+				</div>     
+
+				<div class="listing-content">
+
+ 					<p>{{ listing.description }}</p>
+
+					<div class="listing-info-grid">
+
+						<div class="listing-info">Catagory</div>
+						<div class="listing-info"><b>{{ listing.catagory }}</b></div>
+
+						<div class="listing-info">Seller</div>
+						<div class="listing-info"><b>{{ listing.seller }}</b></div>
+
+						<div class="listing-info">Current Price</div>
+						<div class="listing-info"><b>{{ listing.current_price }} $</b></div>
+
+						<div style="grid-column: 1 / span 2; margin: 20px 0px;">
+							<form action="{% url 'listing' listing.id %}" method="post">
+								{% csrf_token %}
+		
+								{% if listing.seller != user %}
+		
+									{% if listing.sold == False %}
+										<input class="bidding-field" type="number" placeholder="Place a Bid here" name="amount">
+										<button class="bidding-button" type="submit">Bid</button>  
+									{% else %}
+										<strong>Sold!</strong>
+									{% endif %}
+		
+							
+								{% else %}
+		
+									{% if listing.sold == False %}
+										<input type="hidden" name="close" value="close">
+										<button class="bidding-button" type="submit">Close Auction</button>  
+									{% else %}
+										<strong>You Sold this listing successfully to {{ listing.buyer }} <br> at a price of {{ listing.current_price }}$</strong>
+									{% endif %}   
+										
+								{% endif %}
+							</form>
+						</div>
+					</div>
+
+
+
 				</div>
-			</div>  
+
+
+ 
+
+
+			</div>	
+			<div class="listing-image" style="background-image: url('{% static 'auctions/assets/homebackground.jpg' %}');"></div>
+
 		</div>
-	</div>
+
+	</section>
 			
 	<!-- Comments-->
-	<div class="comments_container">
+	<section class="comments-section">
+		<div class="comments-container">
+			<h1>Comments</h1>
 
-		<h5>Comments</h5>
-
-		<!-- New Comment Form -->
-		<div>
-			<form action="{% url 'comment' %}" method="post">
+			<!-- New Comment Form -->
+			<form class="new-comment-form" action="{% url 'comment' %}" method="post">
 				{% csrf_token %}
-				<textarea name="comment" id="comment" cols="60" rows="3" placeholder="Write a Comment here"></textarea>
+				<textarea class="comment-field" name="comment" id="comment" rows="3" columns="100" placeholder="Write a Comment here"></textarea>
 
 				<input type="hidden" name="listing_id" value="{{ listing.id }}">
-				<input type="submit" Value="Comment">
+				<div class="comment-button-div">
+					<input class="comment-button" type="submit" Value="Comment">
+				</div>	
 			</form>
-		</div>
 
-		<!-- Comments -->
-		<div>
-			{% for comment in comments %}
-				<div class="comment">
-					<h4>{{ comment.user }}</h4>
-					<p>{{ comment.text }}</p>
-					<i style="align-self: right;">{{ comment.created_time }}</i>
-				</div>
-			{% empty %}
-				<p>No comments yet on this listing</p>
-			{% endfor %}
+			<!-- Comments -->
+			<div class="comments-grid">
+				{% for comment in comments %}
+					<div class="comment">
+						<b style="font-size: 17px;">{{ comment.user }}</b><small style="color: gray;">  {{ comment.created_time }}</small>
+						<p>{{ comment.text }}</p>
+					</div>
+				{% empty %}
+					<p>No comments yet on this listing</p>
+				{% endfor %}
+			</div>		
 		</div>
-	</div>
+	</section>
 
 		
 

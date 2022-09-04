@@ -1,7 +1,46 @@
-.active-listings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 40px;
-    align-content: center;
+
+.active-listings-heading{
+    font-size: 72px;
+    margin: 30px 0px;
+}
+
+.active-listings-paragraph {
+    margin: 0px 0px;
+}
+
+.active-listings-content {
+    padding: 60px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+
+@media (max-width: 480px) {
+        
+    .active-listings-heading{
+        font-size: 35px;
+        margin-bottom: 15px;
+    }
+
+    .active-listings-content {
+        padding: 15px;
+        padding-top: 0px;
+        font-size: 14px;
+    }
+
+    .active-listings-paragraph {
+        margin: 0px;
+    }
+
+
+    .active-listings-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 40px;
+        align-content: center;
+        padding: 60px;
+        padding-top: 40px;
+
+    }
 
 }

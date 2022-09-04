@@ -1,0 +1,206 @@
+.listing-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    background-color: #ffffff;
+
+    padding: 40px 60px;
+    padding-bottom: 0px;
+
+}
+
+.listing-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding-right: 10px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+}
+.listing-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-content: center;
+}
+
+.listing-content-container {
+    background-color: white;
+    max-width: 600px;
+    border-radius: 5px;
+
+}
+
+.listing-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px;
+
+    width: 80vw;
+    border: 1px solid black;
+}
+
+.listing-image {
+    width: 80%;
+    height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+}
+
+.listing-watchlist-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    padding: 0px 10px;
+    margin-top: 60px;
+}
+.listing-watchlist-button {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: white;
+    color: #0077ff;
+    border: 1px solid #0077ff;
+    transition-duration: 300ms;
+}
+.listing-watchlist-button:hover {
+    background-color: #0077ff;
+    color: white;
+}
+.listing-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 10px;
+}
+.listing-info {
+    border: 0px solid black;
+}
+.listing-info-label {
+    font-weight: 300;
+    
+}
+
+.bidding-field {
+    padding: 10px;
+    margin: 10px 0px;
+}
+.bidding-button {
+    padding: 10px 30px;
+    color: white;
+    background-color: #0077ff;
+    border: none;
+    font-size: 15px;
+    font-family: ubuntu;
+    border-radius: 2px;
+    transition-duration: 200ms;
+    margin-top: 10px;
+}
+.bidding-button:hover {
+    background-color: #005ec9;
+}
+
+
+
+
+/* Comments Section */
+
+.comments-section{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    background-color: #ffffff;
+    padding: 30px 60px;
+    border: 1px solid black;
+}
+
+.comments-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    padding: 15px;
+
+    border: 1px solid black;
+}
+
+.new-comment-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.comment-field {
+    justify-content: stretch;
+    width: 60vw;
+    padding: 10px;
+    border-radius: 5px;
+
+    border: 1px solid black;
+}
+
+
+.comment-button-div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.comment-button {
+    padding: 10px 20px;
+    background-color: #0077ff;
+    color: white;
+    border-radius: 3px;
+    border: none;
+}
+
+.comments-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+
+    border-collapse: collapse;
+    margin: 20px 0px;
+}
+
+.comment {
+    background-color: rgb(255, 255, 255);
+    padding: 10px 30px;
+    border: 1px solid rgb(170, 170, 170);
+    margin-top: -1px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.267);
+}
+
+@media (max-width: 1145px) {
+    .listing-section{
+        padding: 15px;
+    }
+    .listing-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px){
+    .comments-section {
+        padding: 20px 0px;
+    }
+
+    .comment-field {
+        width: 70vw;
+    }
+}
+

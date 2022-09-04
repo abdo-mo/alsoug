@@ -100,7 +100,7 @@ def new_listing(request):
         
 
         # validate listing
-        valid_listing = validate_new_listing(title, description, starting_bid, request.POST["catagory"])
+        valid_listing = validate_new_listing(title, description, image, starting_bid, request.POST["catagory"])
         
         if valid_listing:
             catagory = Catagory.objects.get(name=request.POST["catagory"])
@@ -302,7 +302,8 @@ def catagory(request, catagory_id):
     
     # You left here
     return render(request, "auctions/catagory.html", {
-        "listings": listings
+        "listings": listings,
+        "catagory": catagory
     })
 
 

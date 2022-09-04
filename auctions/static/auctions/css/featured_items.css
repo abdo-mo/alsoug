@@ -9,9 +9,12 @@
 .featured-listings-content {
     padding: 60px;
     padding-bottom: 0px;
+
 }
 .featured-listings-content-heading {
     font-size: 70px;
+    margin: 0px;
+    
 
 }
 .featured-listings-content-paragraph {
@@ -21,20 +24,17 @@
 }
 
 
-
-
 /* Featued Listings Grid */
-
 .featured-listings-grid {
-    /* Grid Settings */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 40px;
-    align-content: center;
-
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    
     padding: 60px;
-    padding-bottom: 0px;
 }
+
 
 .featured-listings-button {
     display: inline-block;
@@ -47,4 +47,27 @@
 .featured-listings-button:hover {
     color: white;
     background-color: #0077ff;
+}
+
+
+@media (max-width: 480px) {
+    .featured-listings-content {
+        padding: 15px;
+        padding-bottom: 0px;
+    }
+    .featured-listings-content-heading {
+        font-size: 30px;
+        margin-top: 30px;
+    }
+    .featured-listings-content-paragraph {
+        font-size: 14px;
+    }
+    .featured-listings-button {
+        font-size: 15px;
+        padding: 7.5px 15px;
+        border-radius: 2px;
+    }
+    .featured-listings-grid {
+        padding: 20px 30px;
+    }
 }

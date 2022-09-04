@@ -1,0 +1,62 @@
+
+.new-listing-form-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+
+    background-color: rgb(0, 119, 255);
+    min-height: 100vh;
+    padding: 100px;
+}
+
+.new-listing-form-container {
+    background-color: white;
+    padding: 60px;
+    padding-top: 30px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.459);
+}
+
+.new-listing-form-fields-flex {
+    padding: 0px;
+}
+
+.new-listing-field {
+    padding: 10px 0px;
+}
+
+.new-listing-input {
+    padding: 10px;
+    font-size: 15px;
+    font-family: ubuntu;
+    width: 400px;
+    margin-top: 10px;
+}
+
+.form-submit-button {
+    padding: 15px 40px;
+    font-family: ubuntu;
+    font-size: 16px;
+    background-color: #0077ff;
+    color: white;
+    border: none;
+}
+
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .new-listing-form-container {
+        padding: 30px;
+    }    
+    .new-listing-input {
+        width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .new-listing-form-container {
+        padding: 15px;
+    }    
+    .new-listing-input {
+        width: 75vw;
+    }
+}

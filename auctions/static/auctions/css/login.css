@@ -1,0 +1,15 @@
+.login-form-input {
+    width: 250px;
+}
+.login-form-container {
+    padding: 40px;
+}
+
+@media (max-width: 480px) {
+    .login-form-input {
+        width: 70vw;
+    }
+    .login-form-container {
+        padding: 27px;
+    }
+}

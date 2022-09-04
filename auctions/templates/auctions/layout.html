@@ -4,6 +4,8 @@
 <html lang="en">
     <head>
         <title>{% block title %}Al-Soug{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <!--
             <link rel="stylesheet" href="https://tackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         -->
@@ -13,6 +15,11 @@
         <link rel="stylesheet" href="{% static 'auctions/css/home_hero_section.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/featured_items.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/active_listings.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/new_listing.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/catagories.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/listing.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/login.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/nav.css' %}">
     </head>
     <body>      
         <!-- Original Navbar -->
@@ -77,7 +84,6 @@
          
         {% block body %}
         {% endblock %}
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
         <!-- Footer -->
         <footer class="footer">

@@ -1,13 +1,16 @@
 {% extends "auctions/layout.html" %}
 {% block body %}
+    <div style="height: 69px;"></div>
+    <div class="catagories-grid">
+        
+        {% for catagory in catagories %}
 
-    {% for catagory in catagories %}
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-            <h4 class="card-title"><a href="{% url 'catagory' catagory.id %}"><a href="{% url 'catagory' catagory.id %}"> {{ catagory.name }} </a></h4>
-            </div>
-        </div>
-      
-    {% endfor %}
+            <a class="catagory-box" href="{% url 'catagory' catagory.id %}"> 
+                <h2 class="catagory-box-title">{{ catagory.name }} </h2> 
+            </a>
+    
+        {% endfor %}    
+
+    </div>
 
 {% endblock %}
