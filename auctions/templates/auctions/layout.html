@@ -57,7 +57,8 @@
         </ul>
         
         -->
-
+        
+        <!-- Navbar -->
         <nav class="navbar">
             <div class="nav-logo">
                 <a href="#">
@@ -77,14 +78,10 @@
                 <a class="navlink major-link underline" href="{% url 'catagories' %}">Catagories</a>
                 <a class="navlink major-link underline" href="{% url 'watchlist' %}">Watchlist</a>
             </div>
-            <div>
-                {% if user.is_authenticated %}
-                    Signed in as <strong>{{ user.username }} </strong>.
-                {% else %}
-                    <button class="login-button">Login</button>
-                {% endif %}
-            </div>        </nav>        
-            
+            <button class="login-button">Login</button>
+        </nav>        
+
+                    
         <!-- Navbar -->
         <!--
            <nav class="navbar">
