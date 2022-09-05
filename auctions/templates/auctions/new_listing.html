@@ -3,7 +3,7 @@
     <div style="height: 70px"></div>
     <div class="new-listing-form-section">
         <div class="new-listing-form-container">
-            <form action="{% url 'new_listing' %}" method="post">
+            <form action="{% url 'new_listing' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <h1>Create a New Listing</h1>
                 

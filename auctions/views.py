@@ -88,9 +88,18 @@ def new_listing(request):
         # Check if a hacker messed the names of the inputs
         try:
             title = request.POST["title"]
+            print(f'Assigning title is done successfully VALUE={title}')
+
             description = request.POST["description"]
+            print(f'Assigning description is done successfully VALUE={description}')
+
+
             image = request.FILES["image"]
+            print(f'Assigning image is done successfully VALUE={image}')
+
             starting_bid = request.POST["starting_bid"]
+            print(f'Assigning starting_bid is done successfully VALUE={starting_bid}')
+
 
         except:
             return render(request, "auctions/new_listing.html", {

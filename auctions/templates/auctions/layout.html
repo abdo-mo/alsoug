@@ -20,6 +20,10 @@
         <link rel="stylesheet" href="{% static 'auctions/css/listing.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/login.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/nav.css' %}">
+
+
+        <script src="{% static 'auctions/js/humburger.js' %}"></script>
+
     </head>
     <body>      
         <!-- Original Navbar -->
@@ -53,9 +57,37 @@
         </ul>
         
         -->
+
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="#">
+                    <img class="logo-image" src="{% static 'auctions/assets/primary_logo.png' %}" alt="alsoug logo">
+                </a>
+            </div>
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>        
+
+            <div class="nav-menu">
+                <a class="navlink major-link underline" href="{% url 'index' %}">Home</a>
+                <a class="navlink major-link underline" href="{% url 'active_listings' %}">Active Listings</a>
+                <a class="navlink major-link underline" href="{% url 'new_listing' %}">Create a New Listing</a>
+                <a class="navlink major-link underline" href="{% url 'catagories' %}">Catagories</a>
+                <a class="navlink major-link underline" href="{% url 'watchlist' %}">Watchlist</a>
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                    Signed in as <strong>{{ user.username }} </strong>.
+                {% else %}
+                    <button class="login-button">Login</button>
+                {% endif %}
+            </div>        </nav>        
             
         <!-- Navbar -->
-        <nav class="navbar">
+        <!--
+           <nav class="navbar">
             <div class="nav-logo">
                 <a href="#">
                     <img class="logo-image" src="{% static 'auctions/assets/primary_logo.png' %}" alt="alsoug logo">
@@ -76,7 +108,9 @@
                 {% endif %}
             </div>
         </nav>     
-
+        
+        -->
+ 
 
         {% if alert %}
             {{ alert | safe }}
