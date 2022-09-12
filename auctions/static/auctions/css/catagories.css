@@ -20,6 +20,7 @@
 
 .catagory-box {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: black;
@@ -28,15 +29,22 @@
     padding: 30px;
     transition-duration: 300ms;
     border-radius: 5px;
+    text-align: center;
 }   
 .catagory-box:hover {
     transform: scale(1.05);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.527);
     background-color: #0077ff2d;
 }
+
+.catagory-icon {
+    height: 100px;
+    width: auto;
+}
+
 .catagory-box-title {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: 500;
 }
 
 @media (max-width: 480px) {

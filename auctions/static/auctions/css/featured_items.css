@@ -41,7 +41,7 @@
     font-size: 18px;
     border: 2px solid #0077ff;
     color: #0077ff;
-    transition: 400ms;
+    transition: 750ms;
 }
 
 .featured-listings-button:hover {

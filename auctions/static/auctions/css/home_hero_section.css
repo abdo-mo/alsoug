@@ -6,6 +6,58 @@
 
     height: 100vh;
     background-size: cover;
-    background-position: top;
+    background-position: bottom;
 
+    text-align: center;
+    padding: 0px 15px;
+    
+
+    color: white;
+}
+
+.home-hero-content {
+    margin-top: 60px;
+}
+
+.home-hero-heading {
+    margin: 0px;
+    padding: 0px;
+    text-shadow: 0px 0px 20px black;
+}
+
+.home-hero-paragraph {
+    max-width: 700px;
+    text-shadow: 0px 0px 5px black;
+    margin: 20px 0px;
+    margin-bottom: 40px;
+}
+
+.home-hero-button {
+    display: inline-block;
+    padding: 13px 23px;
+    font-size: 18px;
+    border: 2px solid white;
+    background-color: #00000041;
+    color: white;
+    margin: 5px;
+    border-radius: 3px;
+    transition-duration: 750ms;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.753);
+    cursor: pointer;
+}
+
+.home-hero-button:hover {
+    background-color: #0077ff;
+    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.349);
+}
+
+@media (max-width: 480px) {
+    .home-hero-section {
+        font-size: 14px;
+    }
+
+
+    .home-hero-button {
+        width: 80%;
+    }
 }

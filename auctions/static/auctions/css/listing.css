@@ -1,55 +1,51 @@
 .listing-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-
     background-color: #ffffff;
 
-    padding: 40px 60px;
-    padding-bottom: 0px;
+    padding: 0px 60px;
 
 }
 
 .listing-container {
+    margin-top: 30px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     
     border-radius: 5px;
     background-color: #ffffff;
-    padding-right: 10px;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
 }
-.listing-grid {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    justify-content: center;
-}
+
+
 
 .listing-content-container {
+    display: flex;
+    flex-direction: column;
+
     background-color: white;
     max-width: 600px;
     border-radius: 5px;
-
 }
 
 .listing-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding-top: 0px;
+    align-items: flex-start;
+    padding: 0px 60px;
+    padding-bottom: 60px;
+}
 
-    width: 80vw;
-    border: 1px solid black;
+.listing-heading {
+    margin: 20px 0px;
+    padding: 0px;
 }
 
 .listing-image {
-    width: 80%;
-    height: 400px;
+    max-width: 100%;
+    height: auto;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -59,13 +55,17 @@
 .listing-watchlist-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     flex-wrap: wrap;
 
-    padding: 0px 10px;
-    margin-top: 60px;
+
+    padding-top: 20px;
+    padding-right: 0px;
+
+    width: 97%;
 }
+
 .listing-watchlist-button {
     padding: 10px 20px;
     font-size: 15px;
@@ -81,7 +81,7 @@
 .listing-info-grid {
     display: grid;
     grid-template-columns: 1fr 5fr;
-    grid-column-gap: 0px;
+    grid-column-gap: 20px;
     grid-row-gap: 10px;
 }
 .listing-info {
@@ -123,7 +123,6 @@
 
     background-color: #ffffff;
     padding: 30px 60px;
-    border: 1px solid black;
 }
 
 .comments-container {
@@ -131,8 +130,6 @@
     flex-direction: column;
     justify-content: stretch;
     padding: 15px;
-
-    border: 1px solid black;
 }
 
 .new-comment-form {
@@ -147,7 +144,6 @@
     padding: 10px;
     border-radius: 5px;
 
-    border: 1px solid black;
 }
 
 
@@ -156,7 +152,6 @@
     justify-content: flex-end;
     align-items: flex-end;
     height: 40px;
-    border: 1px solid black;
 }
 
 .comment-button {
@@ -185,22 +180,51 @@
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.267);
 }
 
-@media (max-width: 1145px) {
+@media (max-width: 1145px) and (min-width: 769px) {
+    /*
     .listing-section{
-        padding: 15px;
+        padding: 60px;
     }
+    */
     .listing-container {
         justify-content: center;
     }
 }
 
+@media (max-width: 768px) and (min-width: 481px) {
+    .listing-section {
+        padding: 0px 20px;
+    }
+    .comments-section {
+        padding: 20px 15px;
+    }
+    .comment-field {
+        width: 70vw;
+    }
+
+    .listing-content {
+        padding: 0px 30px;
+    }
+    
+}
+
 @media (max-width: 480px){
+    .listing-section {
+        padding: 0px 5px;
+    }
+    .listing-content {
+        padding: 0px 15px;
+    }
     .comments-section {
         padding: 20px 0px;
     }
 
+    .listing-watchlist-button {
+        padding: 7.5px 15px;
+    }
+
     .comment-field {
-        width: 70vw;
+        width: 75vw;
     }
 }
 

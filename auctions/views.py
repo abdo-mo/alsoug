@@ -100,11 +100,14 @@ def new_listing(request):
             starting_bid = request.POST["starting_bid"]
             print(f'Assigning starting_bid is done successfully VALUE={starting_bid}')
 
+            catagory = request.POST["catagory"]
+
+
 
         except:
             return render(request, "auctions/new_listing.html", {
                 "catagories": catagories, 
-                "alert": "<h2>You messed the names of the inputs, the police is on the way!</h2>"
+                "alert": "<div style='padding: 20px 20px ' class='red-alert'> Some information is missing, Please fill all the empty fields!</div>"
             })
         
 
@@ -175,7 +178,7 @@ def listing(request, listing_id):
                 listing.save()
 
 
-                alert = '<div class="alert alert-success" role="alert">You Made a Bid Successfully!</div>'
+                alert = '<div class="green-alert">You Made a Bid Successfully!</div>'
 
                 return render(request, "auctions/listing.html", {
                     "alert": alert,
@@ -185,7 +188,7 @@ def listing(request, listing_id):
                 })
 
             else:
-                alert = '<div class="alert alert-danger" role="alert"> Invalid Bid: The bidded amount is less than or equal the current price of the listing. To make a successful bid on the this listing, make a bid with an amount of money that is higher the current price of the listing. </div>'
+                alert = '<div class="red-alert"> Invalid Bid: The bidded amount is less than or equal the current price of the listing. To make a successful bid on the this listing, make a bid with an amount of money that is higher than the current price of the listing. </div>'
                 return render(request, "auctions/listing.html", {
                     "watchlist": watchlist,
                     "alert": alert,
@@ -206,7 +209,7 @@ def listing(request, listing_id):
             # Validate form
             if not validate_close(close):
                 return render(request, "auctions/error.html", {
-                    "message": " you messed with html CLOSE AUCTIONform, the police is on the way"
+                    "message": " you messed with html CLOSE AUCTION form, the police is on the way"
                 })
 
             # Check if there are bids on the listings
@@ -214,7 +217,7 @@ def listing(request, listing_id):
                 # Close the auction
                 listing.sold = True
                 listing.save()
-                alert = f'<div class="alert alert-success" role="alert">You closed the auctions for this listing successfully and sold the listing at the price of {listing.current_price}$ to {listing.buyer}</div>'
+                alert = f'<div class="green-alert">You closed the auctions for this listing successfully and sold the listing at the price of {listing.current_price}$ to {listing.buyer}</div>'
                 return render(request, "auctions/listing.html", {
                     "alert": alert,
                     "listing": listing,
@@ -222,7 +225,7 @@ def listing(request, listing_id):
                 })
 
             else:
-                alert = '<div class="alert alert-danger" role="alert"> Invalid Bid: The bidded amount is less than or equal the current price of the listing. To make a successful bid on the this listing, make a bid with an amount of money that is higher the current price of the listing.</div>'
+                alert = '<div class="red-alert" role="alert"> There are no bids yet on this listing, you can not close it now!</div>'
                 return render(request, "auctions/listing.html", {
                     "alert": alert,
                     "listing": listing,

@@ -1,0 +1,15 @@
+.red-alert {
+    color: rgb(187, 0, 0);
+    border: 2px solid red;
+    background-color: rgb(255, 197, 197);
+    padding: 20px 60px;
+}
+
+.green-alert {
+    color: rgb(0, 136, 45);
+    border: 2px solid rgb(0, 158, 53);
+    background-color: rgb(181, 255, 206);
+    padding: 20px 60px;
+}
+
+

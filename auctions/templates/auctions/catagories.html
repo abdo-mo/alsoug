@@ -1,16 +1,21 @@
 {% extends "auctions/layout.html" %}
+{% load static %}
 {% block body %}
+
+    <!-- Design 1 -->
     <div style="height: 69px;"></div>
     <div class="catagories-grid">
         
         {% for catagory in catagories %}
 
             <a class="catagory-box" href="{% url 'catagory' catagory.id %}"> 
+                <img class="catagory-icon" src="{{ catagory.image }}" alt="{{ catagory.name }} image">
                 <h2 class="catagory-box-title">{{ catagory.name }} </h2> 
             </a>
     
         {% endfor %}    
 
     </div>
+
 
 {% endblock %}

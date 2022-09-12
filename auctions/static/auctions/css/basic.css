@@ -43,8 +43,7 @@
 }
 .nav-menu {
     display: flex;
-
-    border: 1px solid black;
+    flex-direction: row;
 }
 .navlink {
     /* basic <a> setting as a block */
@@ -53,8 +52,8 @@
     color: #0077ff;
     background: linear-gradient(0deg, #0077ff, #0077ff) no-repeat right bottom / 0 var(--bg-h);
 
+    transition-duration: 300ms;
     margin: 0px 10px;
-    border: 1px solid black;
 }
 .navlink:hover {
     color: #0055b6;
@@ -62,12 +61,10 @@
 
 .nav-logo {
     font-size: x-large;
-    border: 1px solid black;
     height: 55px;
 }
 .logo-image {
     height: 55px;
-    border: 1px solid black;
 }
 .login-button {
     border: none;
@@ -94,8 +91,11 @@
     position: absolute;
     top: 17px;
     right: 10px;
+    padding: 0px;
+    border: none;
+    background-color: white;
 
-    border: 1px solid black;
+    cursor: pointer;
 }
 
 .bar {
@@ -112,6 +112,8 @@
 
     .nav-menu {
         display: none;
+        flex-direction: column;
+        overflow: hidden;
     }
 
     .login-button {
@@ -129,20 +131,32 @@
 
 
     .nav-menu {
-        display: none;
+        height: 0px;
+
+        display: flex;
         flex-direction: column;
         width: 100%;
-        background-color: #eeeeee;
+        background-color: #002a5a;
 
+        transition-duration: 500ms;
     }
     .nav-menu:active {
         display: flex;
     }
 
     .navlink {
-        padding: 20px;
-        margin: 0px;
+        padding: 10px;
         text-align: center;
+        background: none;
+
+        border-bottom: 1px solid #001c3b;
+        color: white;
+        margin: 0px;
+    }
+
+    .navlink:hover {
+        background-color: #0052b1;
+        color: white;
     }
 
     
@@ -241,7 +255,7 @@
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(185, 185, 185);
     box-shadow: 0px 0px 4px 0px rgb(145, 145, 145);
-    transition-duration: 450ms;
+    transition-duration: 600ms;
 }
 .listing-card:hover {
     box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.39);
@@ -301,6 +315,10 @@
     color: inherit;
     line-height: 1.4;
 }
+@media (max-width: 900px) {
+
+
+}
 
 
 
@@ -343,6 +361,12 @@ h1 {
     max-width: 800px;
     font-size: 16px;
 
+}
+
+@media (max-width: 768px) and (min-width: 481px){
+    .major-heading {
+        font-size: 48px;
+    }
 }
 
 @media (max-width: 480px) {

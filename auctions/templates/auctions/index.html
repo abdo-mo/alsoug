@@ -21,11 +21,11 @@
                     <img class="logo-image" src="{% static 'auctions/assets/primary_logo.png' %}" alt="alsoug logo">
                 </a>
             </div>
-            <a href="#" class="toggle-button">
+            <button class="toggle-button">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </a>        
+            </button>        
 
             <div class="nav-menu">
                 <a class="navlink major-link underline" href="{% url 'index' %}">Home</a>
@@ -38,8 +38,15 @@
         </nav>        
 
         <!-- Home Hero Section -->
-            <section class="home-hero-section" style="background-image: url('{% static 'auctions/assets/homebackground.jpg' %}')">
-
+            <section class="home-hero-section" style="background-image: url('{% static 'auctions/assets/home-hero-image.png' %}')">
+                <div class="home-hero-content">
+                    <h1 class="major-heading home-hero-heading">Shopping Made Easier</h1>
+                    <p class="home-hero-paragraph">Lorem ipsum, dolor sit amet consectetur  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, sed! adipisicing elit. Amet, fugiat sunt tenetur debitis itaque distinctio nulla nihil.</p>
+                    <a href="{% url 'active_listings' %}" class="home-hero-button">Explore Active Listings</a>
+                    <a href="{% url 'catagories' %}" class="home-hero-button">Explore All Catagories</a>
+                    
+                </div>
+ 
             </section>        
 
 
@@ -72,7 +79,7 @@
             </div>            
 
             <div style="text-align: center; padding: 40px;">
-                <a href="#" class="major-button featured-listings-button">
+                <a href="{% url 'active_listings' %}" class="major-button featured-listings-button">
                     Explore all active listings >>
                 </a>    
             </div>

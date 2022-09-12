@@ -15,11 +15,12 @@
         <link rel="stylesheet" href="{% static 'auctions/css/home_hero_section.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/featured_items.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/active_listings.css' %}">
-        <link rel="stylesheet" href="{% static 'auctions/css/new_listing.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/catagories.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/listing.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/login.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/new_listing.css' %}">
         <link rel="stylesheet" href="{% static 'auctions/css/nav.css' %}">
+        <link rel="stylesheet" href="{% static 'auctions/css/alerts.css' %}">
 
 
         <script src="{% static 'auctions/js/humburger.js' %}"></script>
@@ -57,19 +58,19 @@
         </ul>
         
         -->
-        
+
         <!-- Navbar -->
         <nav class="navbar">
             <div class="nav-logo">
-                <a href="#">
+                <a href="{% url 'index' %}">
                     <img class="logo-image" src="{% static 'auctions/assets/primary_logo.png' %}" alt="alsoug logo">
                 </a>
             </div>
-            <a href="#" class="toggle-button">
+            <button class="toggle-button">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </a>        
+            </button>        
 
             <div class="nav-menu">
                 <a class="navlink major-link underline" href="{% url 'index' %}">Home</a>
@@ -77,9 +78,16 @@
                 <a class="navlink major-link underline" href="{% url 'new_listing' %}">Create a New Listing</a>
                 <a class="navlink major-link underline" href="{% url 'catagories' %}">Catagories</a>
                 <a class="navlink major-link underline" href="{% url 'watchlist' %}">Watchlist</a>
+
+                {% if user.is_authenticated %}
+                    <a id='login-link' class="navlink major-link underline" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a id='login-link' class="navlink major-link underline" href="{% url 'login' %}">Login</a>
+                {% endif %}
             </div>
             <button class="login-button">Login</button>
-        </nav>        
+ 
+         </nav>        
 
                     
         <!-- Navbar -->
@@ -108,10 +116,13 @@
         
         -->
  
+        <!--
+            {% if alert %}
+                {{ alert | safe }}
+            {% endif %}    
+        -->
 
-        {% if alert %}
-            {{ alert | safe }}
-        {% endif %}
+
          
         {% block body %}
         {% endblock %}
@@ -121,15 +132,15 @@
             <div class="footer-heading"><img class="footer-logo" src="{% static 'auctions/assets/light_logo.png' %}" alt="alsoug logo"></div>
             <div></div>
             <div class="footer-content-left">
-                <a class="footer-link major-link underline" href="#">Home</a> <br>
-                <a class="footer-link major-link underline" href="#">Active listings</a> <br>
-                <a class="footer-link major-link underline" href="#">Create a new lisitng</a> <br>
-                <a class="footer-link major-link underline" href="#">Catagories</a> <br>
-                <a class="footer-link major-link underline" href="#">Watchlist</a> 
+                <a class="footer-link major-link underline" href="{% url 'index' %}">Home</a> <br>
+                <a class="footer-link major-link underline" href="{% url 'active_listings' %}">Active listings</a> <br>
+                <a class="footer-link major-link underline" href="{% url 'new_listing' %}">Create a new lisitng</a> <br>
+                <a class="footer-link major-link underline" href="{% url 'catagories' %}">Catagories</a> <br>
+                <a class="footer-link major-link underline" href="{% url 'watchlist' %}">Watchlist</a> 
             </div>
             <div class="footer-content-right">
-                <a class="footer-link major-link underline" href="#">Login</a> <br>
-                <a class="footer-link major-link underline" href="#">Sign up</a> <br>
+                <a class="footer-link major-link underline" href="{% url 'login' %}">Login</a> <br>
+                <a class="footer-link major-link underline" href="{% url 'register' %}">Sign up</a> <br>
                 <a class="footer-link major-link underline" href="#">Terms of services</a> <br>
                 <a class="footer-link major-link underline" href="#">Report a bug</a> <br>
                 <a class="footer-link major-link underline" href="#">contact us</a>

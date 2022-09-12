@@ -1,44 +1,50 @@
 {% extends "auctions/layout.html" %}
+{% load static %}
+
 {% block body %}
 {% load static %}
 
 	<!-- Navbar Area -->
-	<div style="height: 69px;"></div>
+	<div style="height: 55px;"></div>
+
+	{% if alert %}
+		{{ alert | safe }}
+	{% endif %}
 
 	<!-- new markup -->
 	<section class="listing-section">
 		<div class="listing-container">
+
 			<!--
 				<img class="listing-image" src="{% static 'auctions/assets/homebackground.jpg' %}" alt="background">     
 			-->
-			<div class="listing-content-container">
 
-				<!-- Add To Watchlist (watchlist form) --> 
-				<div class="listing-watchlist-container">
-					{% if listing.seller != user %}
-						<h1>{{ listing.title }}</h1>
+			<!-- Add To Watchlist (watchlist form) --> 
+			<div class="listing-watchlist-container">
+				{% if listing.seller != user %}
 
-						<form action="{% url 'watchlist' %}" method="post">
-							{% csrf_token %}
-							<input type="hidden" name="listing_id" value="{{ listing.id }}">
-							{% if listing in watchlist %}
-								<input type="hidden" name="modify" value="remove">
-								<input class="listing-watchlist-button" type="submit" value="Remove from watchlist">
-							{% else %}
-								<input type="hidden" name="modify" value="add">
-								<button class="listing-watchlist-button" type="submit">+ Add to watchlist</button>
-							{% endif %}
-						</form>    
-					
-					{% else %}
-						<h1>{{ listing.title }}</h1>
+					<form action="{% url 'watchlist' %}" method="post">
+						{% csrf_token %}
+						<input type="hidden" name="listing_id" value="{{ listing.id }}">
+						{% if listing in watchlist %}
+							<input type="hidden" name="modify" value="remove">
+							<input class="listing-watchlist-button" type="submit" value="Remove from watchlist">
+						{% else %}
+							<input type="hidden" name="modify" value="add">
+							<button class="listing-watchlist-button" type="submit">+ Add to watchlist</button>
+						{% endif %}
+					</form>    
 
-					{% endif %}                            
-				</div>     
+				{% endif %}                            
+			</div>     
+			
+			<div class="listing-content-container">  
 
 				<div class="listing-content">
+					<h1 class="major-heading listing-heading">{{ listing.title }}</h1>
 
- 					<p>{{ listing.description }}</p>
+
+					<p class="major-paragraph">{{ listing.description }}</p>
 
 					<div class="listing-info-grid">
 
@@ -84,14 +90,13 @@
 				</div>
 
 
- 
-
-
 			</div>	
+			<!--
 			<div class="listing-image" style="background-image: url('{% static 'auctions/assets/homebackground.jpg' %}');"></div>
+			-->
 
+			<img class="listing-image" src="{{listing.image}}" alt="{{listing.image}}">
 		</div>
-
 	</section>
 			
 	<!-- Comments-->
