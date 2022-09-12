@@ -1,8 +1,6 @@
 {% extends "auctions/layout.html" %}
 {% load static %}
-
 {% block body %}
-{% load static %}
 
 	<!-- Navbar Area -->
 	<div style="height: 55px;"></div>
@@ -15,9 +13,6 @@
 	<section class="listing-section">
 		<div class="listing-container">
 
-			<!--
-				<img class="listing-image" src="{% static 'auctions/assets/homebackground.jpg' %}" alt="background">     
-			-->
 
 			<!-- Add To Watchlist (watchlist form) --> 
 			<div class="listing-watchlist-container">
@@ -91,11 +86,8 @@
 
 
 			</div>	
-			<!--
-			<div class="listing-image" style="background-image: url('{% static 'auctions/assets/homebackground.jpg' %}');"></div>
-			-->
-
-			<img class="listing-image" src="{{listing.image}}" alt="{{listing.image}}">
+			
+			<div class="listing-image-div" style="background-image: url('{{listing.image}}');"></div>
 		</div>
 	</section>
 			

@@ -22,7 +22,7 @@ def index(request):
 
 def active_listings(request):
     listings = Listing.objects.filter(sold=False)
-    listings.order_by("created_time")
+    listings.order_by("-created_time")
     return render(request, "auctions/active_listings.html", {
         "listings": listings
     })
@@ -231,9 +231,11 @@ def listing(request, listing_id):
                     "listing": listing,
                     "comments": comments
                 })
+
+    listings = Listing.objects.all()
             
-    return render(request, "auctions/listing.html", {
-        "listing": listing,
+    return render(request, "auctions/listing2.html", {
+        "listings": listings,
         "watchlist": watchlist,
         "comments": comments
     })
