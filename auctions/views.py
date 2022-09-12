@@ -131,7 +131,6 @@ def new_listing(request):
     })
 
 """ ON PROGRESS VIEW """
-@login_required
 def listing(request, listing_id):    
     listing = Listing.objects.get(pk=listing_id)
     watchlist = request.user.watchlist.all()
@@ -143,6 +142,7 @@ def listing(request, listing_id):
     1. 
     
     """
+    
 
     # POST
     if request.method == "POST":
@@ -232,10 +232,8 @@ def listing(request, listing_id):
                     "comments": comments
                 })
 
-    listings = Listing.objects.all()
-            
-    return render(request, "auctions/listing2.html", {
-        "listings": listings,
+    return render(request, "auctions/listing.html", {
+        "listing": listing,
         "watchlist": watchlist,
         "comments": comments
     })
